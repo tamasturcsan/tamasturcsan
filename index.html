@@ -120,6 +120,36 @@
         <p>Phone: (+34) 655-269-519</p>
     </section>
 
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem; /* Added font-size */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            /* Smaller footer text for mobile */
+            footer {
+                font-size: 0.8rem;
+                padding: 0.8rem; /* Reduced padding */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (keep all body content the same) ... -->
     <footer>
         <p>&copy; 1987-2025 Turcsán Tamás. All rights reserved.</p>
     </footer>
