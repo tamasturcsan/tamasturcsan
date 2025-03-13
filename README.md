@@ -121,7 +121,7 @@
     </section>
 
     <footer>
-        <p>&copy; 1987-2025 Your Website Name. All rights reserved.</p>
+        <p>&copy; 1987-2025 Turcsán Tamás. All rights reserved.</p>
     </footer>
 </body>
 </html>
