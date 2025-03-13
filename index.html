@@ -25,6 +25,27 @@
             color: white;
             padding: 1rem;
             text-align: center;
+            position: relative;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: 0.3s;
         }
 
         /* Navigation */
@@ -38,11 +59,14 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
             color: white;
             text-decoration: none;
+            padding: 0.5rem 1rem;
         }
 
         /* Main Content */
@@ -58,9 +82,8 @@
             margin: 0 auto;
         }
 
-        /* Add bottom padding to last section */
         #contact {
-            padding-bottom: 4rem; /* Creates space before footer */
+            padding-bottom: 4rem;
         }
 
         /* Footer */
@@ -69,25 +92,58 @@
             color: white;
             text-align: center;
             padding: 1rem;
-            margin-top: auto; /* Pushes footer to bottom */
+            margin-top: auto;
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Mobile Styles */
         @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
             nav ul {
+                display: none;
                 flex-direction: column;
                 text-align: center;
                 gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #795;
+                padding: 1rem 0;
+                z-index: 999;
             }
-            
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
             footer {
                 font-size: 0.8rem;
                 padding: 0.8rem;
             }
 
             #contact {
-                padding-bottom: 3rem; /* Less space needed on mobile */
+                padding-bottom: 3rem;
             }
         }
     </style>
@@ -95,10 +151,15 @@
 <body>
     <header>
         <h1>Turcsán Tamás</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <nav>
-        <ul>
+        <ul id="navMenu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
@@ -139,5 +200,36 @@
     <footer>
         <p>&copy; 1987-2025 Turcsán Tamás. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('nav ul');
+            
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside or on a link
+        document.addEventListener('click', function(event) {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (!event.target.closest('.hamburger') && !event.target.closest('nav ul')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for any anchor links (if needed)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
