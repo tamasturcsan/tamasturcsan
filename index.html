@@ -14,6 +14,9 @@
 
         body {
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header */
@@ -55,19 +58,22 @@
             margin: 0 auto;
         }
 
+        /* Add bottom padding to last section */
+        #contact {
+            padding-bottom: 4rem; /* Creates space before footer */
+        }
+
         /* Footer */
-         footer {
+        footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            font-size: 0.9rem; /* Added font-size */
+            margin-top: auto; /* Pushes footer to bottom */
+            font-size: 0.9rem;
         }
-        
-       /* Responsive Design */
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -75,10 +81,13 @@
                 gap: 1rem;
             }
             
-            /* Smaller footer text for mobile */
             footer {
                 font-size: 0.8rem;
-                padding: 0.8rem; /* Reduced padding */
+                padding: 0.8rem;
+            }
+
+            #contact {
+                padding-bottom: 3rem; /* Less space needed on mobile */
             }
         }
     </style>
@@ -121,11 +130,10 @@
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section" id="contact">
         <h2>Contact Me</h2>
         <p>Email: tamasturcsan@gmail.com</p>
         <p>Phone: (+34) 655-269-519</p>
-        <p> </p>
     </section>
 
     <footer>
